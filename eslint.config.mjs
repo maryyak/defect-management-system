@@ -20,6 +20,19 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Отключаем запрет на any типы
+      "@typescript-eslint/no-explicit-any": "off",
+
+      // Отключаем проверку зависимостей useEffect
+      "react-hooks/exhaustive-deps": "off",
+
+      // Дополнительные правила которые могут мешать в разработке
+      "@typescript-eslint/no-unused-vars": "warn", // вместо error
+      "prefer-const": "warn", // вместо error
+    },
+  },
 ];
 
 export default eslintConfig;

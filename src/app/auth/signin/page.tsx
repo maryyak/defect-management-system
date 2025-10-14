@@ -28,6 +28,7 @@ export default function SignInPage() {
             }
         } catch (error) {
             alert("Произошла ошибка при входе.");
+            console.log(error)
         } finally {
             setLoading(false);
         }

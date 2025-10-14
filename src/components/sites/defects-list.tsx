@@ -30,7 +30,7 @@ interface DefectsListProps {
     siteName: string;
 }
 
-export default function DefectsList({ siteId, siteName }: DefectsListProps) {
+export default function DefectsList({ siteId }: DefectsListProps) {
     const [defects, setDefects] = useState<Defect[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");

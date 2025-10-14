@@ -27,6 +27,7 @@ export async function GET() {
 
         return NextResponse.json({ message: "Система уже настроена" });
     } catch (error) {
+        console.log(error)
         return NextResponse.json(
             { error: "Ошибка настройки" },
             { status: 500 }
