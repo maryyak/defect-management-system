@@ -20,10 +20,9 @@ interface SitesListProps {
     projectName: string;
 }
 
-export default function SitesList({ projectId, projectName }: SitesListProps) {
+export default function SitesList({ projectId }: SitesListProps) {
     const [sites, setSites] = useState<Site[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
     const [showCreateForm, setShowCreateForm] = useState(false);
     const [newSiteName, setNewSiteName] = useState("");
 
@@ -40,7 +39,7 @@ export default function SitesList({ projectId, projectName }: SitesListProps) {
             const data = await response.json();
             setSites(data);
         } catch (err) {
-            setError(err instanceof Error ? err.message : "Ошибка");
+            console.log(err)
         } finally {
             setLoading(false);
         }
