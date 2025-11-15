@@ -1,36 +1,24 @@
 services:
-  notification-service:
-    build: ./notification-service
-    container_name: defect-notification-service
+  user-service:
+    build: ./user-service
+    container_name: defect-user-service
     ports:
       - "3001:3001"
     environment:
       - NODE_ENV=production
-      - EMAIL_USER=${EMAIL_USER}
-      - EMAIL_PASS=${EMAIL_PASS}
+      - JWT_SECRET=your-super-secret-jwt-key
+      - LOG_LEVEL=info
     networks:
       - defect-network
 
-  report-service:
-    build: ./report-service
-    container_name: defect-report-service
+  defect-service:
+    build: ./defect-service
+    container_name: defect-service
     ports:
       - "3002:3002"
     environment:
       - NODE_ENV=production
-    networks:
-      - defect-network
-
-  nginx:
-    image: nginx:alpine
-    container_name: defect-nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - notification-service
-      - report-service
+      - LOG_LEVEL=info
     networks:
       - defect-network
 
